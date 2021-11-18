@@ -55,7 +55,6 @@
 .count-shopping-cart-product-quantity {
     color: black;
     text-transform: uppercase;
-    font-weight: bold;
     font-size: small;
 }
 
@@ -83,4 +82,25 @@
 }
 .cart-button:hover {
     background-color: #5271ff;
+}
+
+.product-counter-and-shopping-cart-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.product-counter-container-in-shopping-cart {
+    background-color: lightcoral;
+    z-index: 1;
+    position: absolute;
+    border-radius: 12px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.number-of-product-counter-in-shopping-cart {
+    font-size: medium;
+    font-weight: bold;
+    padding: 6px;
+    margin: 0px 3px 0px 3px;
 }

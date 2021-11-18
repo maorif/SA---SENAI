@@ -74,6 +74,7 @@ function createNewAccount() {
                 phone: phone.value,
                 password: password.value,
             }); 
+            clearInputFieldsOnScreen()
             localStorage.setItem("accounts", JSON.stringify(accountList));
             break;
     };
@@ -88,6 +89,23 @@ function returnNewAccountCode() {
         accountList.find(account => account.code == accountCode) != null ? existingAccountCode = true : existingAccountCode = false;
     } while (existingAccountCode == true || accountCode == 0);  
     return accountCode;
+};
+
+// Abaixo é a função para limpar os campos de input.
+
+function clearInputFieldsOnScreen() {
+    let firstname = document.getElementById('firstname');
+    let surname = document.getElementById('surname');
+    let phone = document.getElementById('phone');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let confirmPassword = document.getElementById('confirm-password');
+    firstname.value = '';
+    surname.value = '';
+    phone.value = '';
+    email.value = '';
+    password.value = '';
+    confirmPassword.value = '';
 };
 
 // Abaixo é a função para apresentar a Conta cadastrada na tabela da página.
@@ -222,5 +240,31 @@ function successfulAccountRegistration(fullname) {
     
     setTimeout(function(){ 
         let element = document.getElementById(`alert-message`);
-        element.classList.add('hidden'); }, 5000);
+        element.classList.add('hidden'); 
+        window.location.href = 'login.html'    
+        }, 5000);
+};
+
+function addAndRemovePasswordMask() {
+    let passwordInput = document.getElementById("password");
+    let confirmPasswordInput = document.getElementById("confirm-password");
+    
+    let eyeIcon = document.querySelectorAll('.eye-icon');
+    eyeIcon.forEach(function (icon) {
+        if (passwordInput.type === "password" || confirmPasswordInput.type === "password") {
+            icon.classList.add('fa-eye-slash');
+            icon.classList.remove('fa-eye');
+        } else {
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        } 
+    });
+    
+    if (passwordInput.type === "password" || confirmPasswordInput.type === "password") {
+        passwordInput.type = "text";
+        confirmPasswordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+        confirmPasswordInput.type = "password"
+    } 
 };

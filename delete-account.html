@@ -16,15 +16,14 @@
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/mobile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Cadastrar Conta</title>
+    <title>Deletar Conta</title>
 </head>
 <body>
-    
+
     <header id="hdr">
     </header>
 
     <main class="row">
-        
         <div id="general-menu-bar" class="menu column hidden">
         </div>
 
@@ -36,36 +35,28 @@
             </div>
 
 
-            <section id="registration-account-section">
+            <section id="account-delete-section">
                 <form>
-                    <h2>criar conta</h2>
+                    <h2>excluir conta</h2>
+                    <p>Para deletar um cadastro, preencha apenas um dos campos de filtro abaixo e clique no botão Deletar.</p>
                     <div class="column">
-                        <div class="input-column">
+                        <div class="column">
                             <div class="row align-center width100">
-                                <input id="firstname" type="text" placeholder="Nome" required>
-                                <input id="surname" type="text" placeholder="Sobrenome" required>
-                            </div>
-                            <div class="row align-center width100">
-                                <input id="email" type="email" placeholder="E-mail" required>
-                                <input id="phone" type="tel" placeholder="Telefone" required>
-                            </div>
-                            <div class="row align-center width100">
-                                <input id="password" type="password" placeholder="Senha" required> 
-                                <input id="confirm-password" type="password" placeholder="Repetir Senha" required>  
-                            </div>
-                            <div class="row align-center width100">
-                                <button class="form-button" type="button" onclick="createNewAccount(); return false">cadastrar</button>
-                                <button class="form-button" type="button">Já tenho uma conta</button>
-                            </div>
-                        </div>                  
+                                <input id="remove-code" type="number" placeholder="Digite o código da conta">
+                                <input id="remove-email" type="email" placeholder="Digite o e-mail da conta">  
+                            </div>  
+                            <div class="row align-center">
+                                <button class="form-button" type="button" onclick="removeAccount(); return false">deletar</button>
+                            </div>                
+                        </div>
                     </div>
                 </form>
                 <div class="table-container">
                     <div>
-                        <h2>contas cadastradas recentecemente</h2>
-                        <p class="note-above-table">são apresentados apenas os cadastrados nesta sessão</p> 
+                        <h2>contas excluídas recentemente</h2>
+                        <p class="note-above-table">são apresentados apenas os excluídos nesta sessão</p> 
                     </div>
-                    <div id="recent-registered-account-table" class="table hidden">
+                    <div id="recent-deleted-account-table" class="table hidden">
                         <div id="registration-line" class="thead tr">
                             <div class="thead-td thead-td-code">
                                 código
@@ -100,8 +91,9 @@
 
     <script src="js/index.js"></script>
     <script src="js/open-page.js"></script>
-    <script src="js/register-account.js"></script>
+    <script src="js/delete-account.js"></script>
     <script src="js/common-content.js"></script>
     <script src="js/side-shopping-cart.js"></script>
+    <script src="js/my-account-data.js"></script>
 </body>
 </html>

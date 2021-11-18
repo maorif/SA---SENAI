@@ -9,10 +9,16 @@ function sideGeneralMenu() {
         generalMenuBar.classList.remove('hidden');
         let shoppingCartBar = document.getElementById('shopping-cart-bar');
         shoppingCartBar.classList.add('hidden');
+        let menuIcon = document.querySelector('.menu-icon');
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-chevron-circle-up');
         return openedMenuBar = true;  
     } else {
         let generalMenuBar = document.getElementById('general-menu-bar');
         generalMenuBar.classList.add('hidden');
+        let menuIcon = document.querySelector('.menu-icon');
+        menuIcon.classList.remove('fa-chevron-circle-up');
+        menuIcon.classList.add('fa-bars');
         return openedMenuBar = false;   
     };
 };
@@ -23,10 +29,16 @@ function sideMyShoppingCart() {
         shoppingCartBar.classList.remove('hidden');
         let generalMenuBar = document.getElementById('general-menu-bar');
         generalMenuBar.classList.add('hidden');
+        let shoppingCartIcon = document.querySelector('.shopping-cart-icon');
+        shoppingCartIcon.classList.remove('fa-shopping-cart');
+        shoppingCartIcon.classList.add('fa-chevron-circle-up');
         return openedShoppingBar = true;  
     } else {
         let shoppingCartBar = document.getElementById('shopping-cart-bar');
         shoppingCartBar.classList.add('hidden');
+        let shoppingCartIcon = document.querySelector('.shopping-cart-icon');
+        shoppingCartIcon.classList.remove('fa-chevron-circle-up');
+        shoppingCartIcon.classList.add('fa-shopping-cart');
         return openedShoppingBar = false;   
     };
 };
@@ -41,6 +53,9 @@ function accountMenuOptions() {
         menuRegistrationNewAccount.classList.remove('hidden');
         menuRegistrationSearchAccount.classList.remove('hidden');
         menuRegistrationDeleteAccount.classList.remove('hidden');
+        let upDownIcon = document.querySelector('.up-down-icon1');
+        upDownIcon.classList.remove('fa-chevron-circle-down');
+        upDownIcon.classList.add('fa-chevron-circle-up');
         return openedAccountMenu = true;   
     } else {
         let menuRegistrationSearchAccount = document.getElementById('menu-registration-search-account');
@@ -51,6 +66,9 @@ function accountMenuOptions() {
         menuRegistrationNewAccount.classList.add('hidden');
         menuRegistrationEditAccount.classList.add('hidden');
         menuRegistrationDeleteAccount.classList.add('hidden');
+        let upDownIcon = document.querySelector('.up-down-icon1');
+        upDownIcon.classList.remove('fa-chevron-circle-up');
+        upDownIcon.classList.add('fa-chevron-circle-down');
         return openedAccountMenu = false;    
     };
 };
@@ -65,6 +83,9 @@ function productMenuOptions() {
         menuRegistrationNewProduct.classList.remove('hidden');
         menuRegistrationSearchProduct.classList.remove('hidden');
         menuRegistrationDeleteProduct.classList.remove('hidden');
+        let upDownIcon = document.querySelector('.up-down-icon2');
+        upDownIcon.classList.remove('fa-chevron-circle-down');
+        upDownIcon.classList.add('fa-chevron-circle-up');
         return openedProductMenu = true;
     } else {    
         let menuRegistrationSearchProduct = document.getElementById('menu-registration-search-product');
@@ -75,6 +96,9 @@ function productMenuOptions() {
         menuRegistrationEditProduct.classList.add('hidden');
         menuRegistrationSearchProduct.classList.add('hidden');
         menuRegistrationDeleteProduct.classList.add('hidden');
+        let upDownIcon = document.querySelector('.up-down-icon2');
+        upDownIcon.classList.remove('fa-chevron-circle-up');
+        upDownIcon.classList.add('fa-chevron-circle-down');
         return openedProductMenu = false;      
     };
 };
@@ -84,6 +108,7 @@ function showSearchPageToEditAccount() {
     let accountEditSection = document.getElementById('account-edit-section');
     searchAccountEditSection.classList.remove('hidden');
     accountEditSection.classList.add('hidden');
+    clearInputFieldsOnScreen();
 };
 
 function showAccountPageToEdit() {

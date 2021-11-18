@@ -5,22 +5,28 @@
 
 document.getElementById('hdr').innerHTML = `
     <div class="row header-img-container">
-        <button class="icon" id="menu-button" type="button" title="Menu" onclick="sideGeneralMenu(); return false"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        <button class="icon" id="menu-button" type="button" title="Menu" onclick="sideGeneralMenu(); return false"><i class="fa fa-bars menu-icon" aria-hidden="true"></i></button>
         <img src="img/logo-header.png" alt="logo">
     </div>
     <div class="header-button-container">
-        <button class="icon" id="my-shopping-cart" type="button" title="Compras" onclick="sideMyShoppingCart(); return false"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+        <div class="product-counter-and-shopping-cart-container" onclick="sideMyShoppingCart(); return false">
+            <div class="product-counter-container-in-shopping-cart hidden">
+                <p class="number-of-product-counter-in-shopping-cart"></p>
+            </div>
+            <button class="icon" id="my-shopping-cart" type="button" title="Compras"><i class="fa fa-shopping-cart shopping-cart-icon" aria-hidden="true"></i></button>
+        </div>
+        <button class="icon" id="my-account-data-button" type="button" title="Meus Dados" onclick="myAccountData(); return false"><i class="fa fa-user" aria-hidden="true"></i></button>
         <button class="icon" id="end-section-button" type="button" title="Sair" onclick=""><i class="fa fa-times-circle" aria-hidden="true"></i></button>
     </div>
 `;
 
 document.getElementById('general-menu-bar').innerHTML = `
-    <button id="menu-registration-account" class="menu-button menu-header" type="button" onclick="accountMenuOptions(); return false">contas<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+    <button id="menu-registration-account" class="menu-button menu-header" type="button" onclick="accountMenuOptions(); return false">contas<i class="fa fa-chevron-circle-up up-down-icon1" aria-hidden="true"></i></button>
     <a id="menu-registration-search-account" href="search-account.html" class="link-text"><button class="menu-button hidden" type="button">buscar</button></a>
     <a id="menu-registration-new-account" href="register-account.html" class="link-text"><button class="menu-button hidden" type="button">novo</button></a>
     <a id="menu-registration-edit-account" href="edit-account.html" class="link-text"><button class="menu-button hidden" type="button">editar</button></a>
     <a id="menu-registration-delete-account" href="delete-account.html" class="link-text"><button class="menu-button hidden" type="button">excluir</button></a>
-    <button id="menu-registration-product" class="menu-button menu-header" type="button" onclick="productMenuOptions(); return false">produtos<i class="fa fa-chevron-circle-down" aria-hidden="true"></i></button>
+    <button id="menu-registration-product" class="menu-button menu-header" type="button" onclick="productMenuOptions(); return false">produtos<i class="fa fa-chevron-circle-up up-down-icon2" aria-hidden="true"></i></button>
     <a id="menu-registration-search-product" href="search-product.html" class="link-text"><button class="menu-button hidden" type="button">buscar</button></a>
     <a id="menu-registration-new-product" href="register-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">novo</button></a>
     <a id="menu-registration-edit-product" href="edit-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">editar</button></a>

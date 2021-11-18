@@ -33,9 +33,20 @@ function searchAccountToEdit() {
     });
 };
 
+// Abaixo é a função para limpar os campos de input.
+
+function clearInputFieldsOnScreen() {
+    let editEmailSearch = document.getElementById('search-account-email-to-edit');
+    let editCodeSearch = document.getElementById('search-account-code-to-edit');
+
+    editEmailSearch.value = '';
+    editCodeSearch.value = '';
+};
+
 // Abaixo são as funções para mostrar os dados de uma conta pesquisada.
 
 function showAccountData(accData) {
+    console.log(accData)
     let accountCode = document.getElementById('account-code');
     let accountCpf = document.getElementById('account-cpf');
     let accountEmail = document.getElementById('account-email');
@@ -73,7 +84,7 @@ function showAccountData(accData) {
     accountCardSecurityNumber.value = accData.cardSecurityNumber;
     accountCardValidity.value = accData.cardValidity;
     accountCardHolderName.value = accData.cardHolderName;
-    
+    debugger
     objectBeingEdited = accData;
 
     return objectBeingEdited;
@@ -160,9 +171,8 @@ function editAccountData(objectBeingEdited) {
             objectBeingEdited.cardHolderName = accountCardHolderName.value;
 
             alertText = `Conta de ${fullname} alterada com sucesso!`;
-        
+            
             sucessfulEditedAccount(alertText);
-        
             localStorage.setItem("accounts", JSON.stringify(accountList));
             break;
     }
@@ -177,6 +187,7 @@ function removeAccountDataInEdition(objectBeingEdited) {
             accountList.splice(i, 1);
             alertText = `Conta de ${fullname} excluída com sucesso!`;
             sucessfulEditedAccount(alertText);
+            showSearchPageToEditAccount();
             localStorage.setItem("accounts", JSON.stringify(accountList));
         };
     });
@@ -330,4 +341,24 @@ function addAllAccountOnTable() {
         phoneTd.classList.add('tbody-td','tbody-td-phone');
         passwordTd.classList.add('tbody-td','tbody-td-password');
     };
+};
+
+function addAndRemovePasswordMask() {
+    let accountPassword = document.getElementById("account-password");
+    let eyeIcon = document.querySelectorAll('.eye-icon');
+    eyeIcon.forEach(function (icon) {
+        if (accountPassword.type === "password") {
+            icon.classList.add('fa-eye-slash');
+            icon.classList.remove('fa-eye');
+        } else {
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        } 
+    });
+
+    if (accountPassword.type === "password") {
+        accountPassword.type = "text";
+    } else {
+        accountPassword.type = "password";
+    }
 };

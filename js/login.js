@@ -22,12 +22,12 @@ function Login(){
             break;
         
         case (password.value == ''):
-            alertText = `Preencha o campo da sua senha!`;
+            alertText = `Preencha o campo da sua Senha!`;
             ErrorMessage('password', alertText);
             break;
     
         case (userData == undefined):
-            alertText = `O email "${email.value}" não está cadastrado!`;
+            alertText = `O e-mail "${email.value}" não está cadastrado!`;
             ErrorMessage('email', alertText);
             break;
 
@@ -37,7 +37,7 @@ function Login(){
             break;
         
         default:
-            alertText = `Login feito com sucesso!`;
+            alertText = `Login efetuado com sucesso!`;
             LoginConfirmed(alertText);
     }
 }
@@ -80,7 +80,7 @@ function LoginConfirmed(alertText) {
 
     setTimeout(function(){ 
         let element = document.getElementById(`alert-message`);
-        element.classList.add('hidden'); }, 5000);
-        //tirar o comentário quando tiver a página principal
-        //window.location.href = 'main-page.html'; 
+        element.classList.add('hidden'); 
+        window.location.href = 'main-page.html'
+        }, 5000);
 };

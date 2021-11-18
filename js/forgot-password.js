@@ -15,7 +15,7 @@ function SendEmail(){
     let alertText = '';
 
     if (userData == undefined){
-        alertText = `O E-mail (${email.value}) não está cadastrado!`
+        alertText = `O e-mail (${email.value}) não está cadastrado!`
         ErrorMessage(alertText);
     }
 
@@ -58,5 +58,7 @@ function EmailSent(alertText) {
 
     setTimeout(function(){ 
         let element = document.getElementById(`alert-message`);
-        element.classList.add('hidden'); }, 5000);
+        element.classList.add('hidden'); 
+        window.location.href = "./login.html";
+    }, 5000);
 };
