@@ -69,6 +69,9 @@
 .thead-td-product-value {
     width: 14%;
 }
+.thead-td-product-buttons {
+    width: 14%;
+}
 .tbody-td {
     font-size: smaller;
 }
@@ -92,15 +95,40 @@
     width: 14%;
 }
 
-.tbody-td-description {
+.tbody-td-product-name {
     width: 29%;
-    text-transform: lowercase;
 }
 
-.tbody-td-quantity {
+.tbody-td-product-description {
+    width: 29%;
+}
+
+.tbody-td-product-stock {
     width: 14%;
 }
 
-.tbody-td-value {
+.tbody-td-product-value {
     width: 14%;
+}
+
+.tbody-td-product-buttons {
+    width: 14%;
+    display: flex;
+    flex-direction: row;
+}
+
+.tbody-button {
+    padding: 10px;
+    border-radius: 6px;
+    width: auto;
+    margin-right: 3px;
+    font-weight: bold;
+    font-size: 11px;
+    box-shadow: 1px 1px 1px 1px black;
+    background-color: #7a90f5;
+    border: 1px solid #5271ff;
+}
+
+.tbody-button:hover {
+    filter: brightness(0.9);
 }

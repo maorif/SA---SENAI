@@ -1,5 +1,4 @@
-let accountList = JSON.parse(localStorage.getItem('accounts'))
-let allAcc = accountList;
+let allAcc = db.getAccounts();
 
 addAllAccountOnTable(allAcc);
 

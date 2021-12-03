@@ -1,5 +1,4 @@
-let productList = JSON.parse(localStorage.getItem('products'))
-let allProd = productList;
+let allProd = db.getAllProducts();
 
 addAllProductOnTable(allProd);
 

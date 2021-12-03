@@ -18,7 +18,7 @@
     font-size: x-small;
 }
 .menu-button:hover{
-    background-color: rgb(219, 209, 112);
+    filter: brightness(0.9);
 }
 .menu-header {
     background-color: #ffde59;

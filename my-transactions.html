@@ -15,8 +15,9 @@
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/hidden-table.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Cadastrar Produto</title>
+    <title>Pesquisar Produto</title>
 </head>
 <body>
     
@@ -36,35 +37,13 @@
             </div>
 
 
-            <section id="registration-product-section">
-                <form>
-                    <h2>criar produto</h2>
-                    <div class="column">
-                        <div class="input-column">
-                            <div class="row align-center width100">
-                                <input id="product-name" type="text" placeholder="Nome" required>
-                                <input id="product-stock-quantity" type="number" placeholder="Quantidade Disponível" required> 
-                            </div>
-                            <div class="row align-center width100">
-                                <input id="product-description" type="text" placeholder="Descrição" required>
-                                <input id="product-value" type="number" step="0.01" placeholder="Valor R$" required>
-                            </div>
-                            <div class="row align-center width100">
-                                <button class="form-button" type="button" onclick="createNewProduct(); return false">cadastrar</button>
-                            </div>
-                        </div>                  
-                    </div>
-                </form>
-                <div class="table-container">
+            <section id="research-account-section">
+                <div id="my-product-container" class="table-container">
                     <div>
-                        <h2>produtos cadastrados recentecemente</h2>
-                        <p class="note-above-table">são apresentados apenas os cadastrados nesta sessão</p> 
+                        <h2>meus produtos</h2> 
                     </div>
-                    <div id="recent-registered-product-table" class="table hidden">
+                    <div id="my-product-table" class="table hidden">
                         <div id="registration-line" class="thead tr">
-                            <div class="thead-td thead-td-product-code">
-                                código
-                            </div>
                             <div class="thead-td thead-td-product-name-description">
                                 nome
                             </div>
@@ -76,6 +55,33 @@
                             </div>
                             <div class="thead-td thead-td-product-value">
                                 valor
+                            </div>
+                            <div class="thead-td thead-td-product-buttons">
+                                ações
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="all-registered-product-container" class="table-container">
+                    <div>
+                        <h2>ofertas</h2>
+                    </div>
+                    <div id="all-registered-product-table" class="table hidden">
+                        <div id="registration-line2" class="thead tr">
+                            <div class="thead-td thead-td-product-name-description">
+                                nome
+                            </div>
+                            <div class="thead-td thead-td-product-name-description">
+                                descrição
+                            </div>
+                            <div class="thead-td thead-td-product-stock">
+                                quantidade
+                            </div>
+                            <div class="thead-td thead-td-product-value">
+                                valor
+                            </div>
+                            <div class="thead-td thead-td-product-buttons">
+                                ações
                             </div>
                         </div>
                     </div>
@@ -89,7 +95,7 @@
         </div>
 
     </main>
-    
+
     <footer id="ftr">
     </footer>
 
@@ -104,7 +110,7 @@
     <!--
         Scripts específicos da página
     -->
-    <script src="js/register-product.js"></script>
+    <script src="js/main-page.js"></script>
 
 </body>
 </html>

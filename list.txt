@@ -1,0 +1,14 @@
+['delete-account.html',
+'delete-product.html,
+'edit-account.html'
+'edit-product.html'
+'forgot-password.html'
+'list.txt'
+'login.html'
+'main-page.html'
+'my-account-data.html'
+'my-product-data.html'
+'register-account.html'
+'register-product.html'
+'search-account.html'
+'search-product.html']

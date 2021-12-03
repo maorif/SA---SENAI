@@ -2,38 +2,28 @@
     Por enquanto ficou meio quebra-galho: todo o conteudo dentro de strings passadas ao innerHTML dos containers
     é chato de editar mas está concentrado num lugar só o que facilita alteracoes posteriores
 */
+let flagUser = db.isUserLoggedIn();
+let cart = document.getElementById('shopping-cart-bar');
+let username = 'Login';
+let divLogout = '';
+let divCartBtn = '';
 
-document.getElementById('hdr').innerHTML = `
-    <div class="row header-img-container">
-        <button class="icon" id="menu-button" type="button" title="Menu" onclick="sideGeneralMenu(); return false"><i class="fa fa-bars menu-icon" aria-hidden="true"></i></button>
-        <img src="img/logo-header.png" alt="logo">
-    </div>
-    <div class="header-button-container">
+if (flagUser) {
+    username = db.getMyAccountInfo().email;
+    divLogout = '<button class="icon" id="end-section-button" type="button" title="Sair" onclick="logout(); return false"><i class="fa fa-times-circle" aria-hidden="true"></i></button>';
+}
+
+if (cart) {
+    divCartBtn = `
         <div class="product-counter-and-shopping-cart-container" onclick="sideMyShoppingCart(); return false">
             <div class="product-counter-container-in-shopping-cart hidden">
                 <p class="number-of-product-counter-in-shopping-cart"></p>
             </div>
             <button class="icon" id="my-shopping-cart" type="button" title="Compras"><i class="fa fa-shopping-cart shopping-cart-icon" aria-hidden="true"></i></button>
         </div>
-        <button class="icon" id="my-account-data-button" type="button" title="Meus Dados" onclick="myAccountData(); return false"><i class="fa fa-user" aria-hidden="true"></i></button>
-        <button class="icon" id="end-section-button" type="button" title="Sair" onclick=""><i class="fa fa-times-circle" aria-hidden="true"></i></button>
-    </div>
-`;
+    `;
 
-document.getElementById('general-menu-bar').innerHTML = `
-    <button id="menu-registration-account" class="menu-button menu-header" type="button" onclick="accountMenuOptions(); return false">contas<i class="fa fa-chevron-circle-up up-down-icon1" aria-hidden="true"></i></button>
-    <a id="menu-registration-search-account" href="search-account.html" class="link-text"><button class="menu-button hidden" type="button">buscar</button></a>
-    <a id="menu-registration-new-account" href="register-account.html" class="link-text"><button class="menu-button hidden" type="button">novo</button></a>
-    <a id="menu-registration-edit-account" href="edit-account.html" class="link-text"><button class="menu-button hidden" type="button">editar</button></a>
-    <a id="menu-registration-delete-account" href="delete-account.html" class="link-text"><button class="menu-button hidden" type="button">excluir</button></a>
-    <button id="menu-registration-product" class="menu-button menu-header" type="button" onclick="productMenuOptions(); return false">produtos<i class="fa fa-chevron-circle-up up-down-icon2" aria-hidden="true"></i></button>
-    <a id="menu-registration-search-product" href="search-product.html" class="link-text"><button class="menu-button hidden" type="button">buscar</button></a>
-    <a id="menu-registration-new-product" href="register-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">novo</button></a>
-    <a id="menu-registration-edit-product" href="edit-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">editar</button></a>
-    <a id="menu-registration-delete-product" href="delete-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">excluir</button></a>
-`;
-
-document.getElementById('shopping-cart-bar').innerHTML = `
+    cart.innerHTML = `
         <div class="table-container-shopping-cart">
             <div>
                 <h2>meu carrinho</h2> 
@@ -55,12 +45,43 @@ document.getElementById('shopping-cart-bar').innerHTML = `
                 <p id="shopping-cart-total-price">R$ 0,00</p>
             </div>
             <div class="align-center width100">
-                <button class="cart-button">comprar</button>
+                <button class="cart-button" onclick="cartPurchase()">comprar</button>
             </div>
         </div>    
     </div>
 `;
+}
 
+document.getElementById('hdr').innerHTML = `
+    <div class="row header-img-container">
+        <button class="icon" id="menu-button" type="button" title="Menu" onclick="sideGeneralMenu(); return false"><i class="fa fa-bars menu-icon" aria-hidden="true"></i></button>
+        <a href="./main-page.html">
+            <img src="img/logo-header.png" alt="logo">
+        </a>
+    </div>
+    <div class="header-button-container">
+        ${username}
+        <button class="icon" id="my-account-data-button" type="button" title="Meus Dados" onclick="myAccountData(); return false"><i class="fa fa-user" aria-hidden="true"></i></button>
+        ${divCartBtn}
+        ${divLogout}
+    </div>
+`;
+
+document.getElementById('general-menu-bar').innerHTML = `
+    <a id="menu-main-page" href="main-page.html" class="link-text"><button class="menu-button hidden" type="button">tela de início</button></a>
+    <a id="" href="" class="link-text"><button class="menu-button hidden" type="button">meu carrinho</button></a>
+    <button id="menu-registration-account" class="menu-button menu-header" type="button" onclick="accountMenuOptions(); return false">conta<i class="fa fa-chevron-circle-up up-down-icon1" aria-hidden="true"></i></button>
+    <a id="menu-registration-search-account" href="search-account.html" class="link-text"><button class="menu-button hidden" type="button">buscar</button></a>
+    <a id="menu-registration-new-account" href="register-account.html" class="link-text"><button class="menu-button hidden" type="button">novo</button></a>
+    <a id="menu-registration-edit-account" href="edit-account.html" class="link-text"><button class="menu-button hidden" type="button">editar</button></a>
+    <a id="menu-registration-delete-account" href="delete-account.html" class="link-text"><button class="menu-button hidden" type="button">excluir</button></a>
+    <a id="" href="" class="link-text"><button class="menu-button hidden" type="button">minhas transações</button></a>
+    <button id="menu-registration-product" class="menu-button menu-header" type="button" onclick="productMenuOptions(); return false">produto<i class="fa fa-chevron-circle-up up-down-icon2" aria-hidden="true"></i></button>
+    <a id="menu-registration-search-product" href="search-product.html" class="link-text"><button class="menu-button hidden" type="button">buscar</button></a>
+    <a id="menu-registration-new-product" href="register-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">novo</button></a>
+    <a id="menu-registration-edit-product" href="edit-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">editar</button></a>
+    <a id="menu-registration-delete-product" href="delete-product.html" class="link-text"><button class="menu-button hidden" type="button" onclick="">excluir</button></a>
+`;
 
 document.getElementById('ftr').innerHTML = `
 <div class="row width100">
@@ -69,7 +90,7 @@ document.getElementById('ftr').innerHTML = `
     </div>
     <div class="footer-column">
         <p class="footer-topics">Seja um vendedor:</p>
-        <p class="footer-text"><a href="">Cadastre-se</a></p>
+        <p class="footer-text"><a href="register-account.html">Cadastre-se</a></p>
     </div>
     <div class="footer-column">
         <p class="footer-topics">Trabalhe conosco:</p>
@@ -91,3 +112,31 @@ document.getElementById('ftr').innerHTML = `
     <p class="creator-rights">Todos os direitos reservados @MercadoTech 2021</p>
 </div>
 `;
+
+/*
+**  FUNÇÃO DE CONVERSÃO DA STRING EM MOEDA
+*/
+let realBR = Intl.NumberFormat("pt-br", {
+    style: "currency",
+    currency: "BRL",
+});
+
+/*
+**  Logout limpando os dados armazenados e redirecionando para o login
+*/
+function logout() {
+    db.requestLogout();
+    window.location.href = "./login.html";
+};
+
+/*
+**  Testa se existe usuario logado para passar para os dados cadastrais, senao vai pro login
+*/
+function myAccountData() {
+    let page = (db.isUserLoggedIn()) ? "./my-account-data.html" : "./login.html";
+    window.location.href = page;
+};
+
+function cartPurchase() {
+    window.location.href = './cart-purchase.html';
+}

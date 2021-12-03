@@ -1,5 +1,3 @@
-let productList = [];
-let productCode;
 let productName = document.getElementById('product-name');
 let productDescription = document.getElementById('product-description');
 let productValue = document.getElementById('product-value');
@@ -38,52 +36,42 @@ function createNewProduct() {
             valueValidationErrorOnRegisterProduct();
             break;
         default:
-            returnNewProductCode();
-            productList.push({
-                code: productCode,
-                name: productName.value,
-                quantity: Number(productStockQuantity.value),
-                description: productDescription.value,
-                value: Number(productValue.value),
-            });
+            let inputsArr = [
+                productName.value,
+                Number(productStockQuantity.value),
+                productDescription.value,
+                Number(productValue.value),
+            ];
+            db.createNewProduct(...inputsArr);
+            addNewProductOnTable(...inputsArr);
             successfulProductRegistration();
-            addNewProductOnTable({
-                code: productCode,
-                name: productName.value,
-                quantity: Number(productStockQuantity.value),
-                description: productDescription.value,
-                value: Number(productValue.value),
-            }); 
-            localStorage.setItem("products", JSON.stringify(productList));
-            break;
-    };
-};
+            clearInputFieldsOnScreen();
+    }
+}
 
-// Abaixo é a função que compõe a geração e validação de código do Produto.
+// Abaixo é a função para limpar os campos de input.
 
-function returnNewProductCode() { 
-    let existingProductCode = false;
-    do {
-        productCode = Math.floor(Math.random() * 10000);
-        productList.find(product => product.code == productCode) != null ? existingProductCode = true : existingProductCode = false;
-    } while (existingProductCode == true || productCode == 0);  
-    return productCode;
-};
+function clearInputFieldsOnScreen() {
+    productName.value = '';
+    productStockQuantity.value = '';
+    productDescription.value = '';
+    productValue.value = '';
+}
 
 // Abaixo é a função para apresentar o Produto cadastrado na tabela da página.
 
-function addNewProductOnTable(newProd) {
+function addNewProductOnTable(name, quantity, description, value) {
     let accountLine = document.createElement('div');
     let idTd = document.createElement('div');
     let nameTd = document.createElement('div');
     let quantityTd = document.createElement('div');
     let descriptionTd = document.createElement('div');
     let valueTd = document.createElement('div');
-    idTd.textContent = newProd.code;
-    nameTd.textContent = newProd.name;
-    descriptionTd.textContent = newProd.description;
-    quantityTd.textContent = newProd.quantity;
-    valueTd.textContent = `R$ ${newProd.value.toFixed(2)}`;
+    idTd.textContent = '';
+    nameTd.textContent = name;
+    descriptionTd.textContent = description;
+    quantityTd.textContent = quantity;
+    valueTd.textContent = realBR.format(value);
     accountLine.appendChild(idTd);
     accountLine.appendChild(nameTd);
     accountLine.appendChild(descriptionTd);

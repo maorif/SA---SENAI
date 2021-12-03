@@ -81,7 +81,7 @@
     transition: 0.10;
 }
 .cart-button:hover {
-    background-color: #5271ff;
+    filter: brightness(0.9);
 }
 
 .product-counter-and-shopping-cart-container {

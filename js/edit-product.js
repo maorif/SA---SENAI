@@ -1,6 +1,13 @@
 let objectBeingEdited;
-let productList = JSON.parse(localStorage.getItem('products'))
-let allProd = productList;
+let allProd;
+
+if(db.isUserAdmin()){
+    allProd = db.getAllProducts();
+}
+else{
+    allProd = db.getMyProducts();
+}
+
 
 addAllProductOnTable(allProd);
 

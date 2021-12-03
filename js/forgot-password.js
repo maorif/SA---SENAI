@@ -1,27 +1,14 @@
-//função para achar conta (pelo email) em lista de contas
-function FindUserData(accountList, email){
-
-    let objFound = accountList.find(obj => obj.email == email);
-
-return objFound;
-}
-
 //"envia" email para recuperação de senha
 function SendEmail(){
-    let accountList = JSON.parse(localStorage.getItem("accounts"));
     let email = document.getElementById("email");
-
-    let userData = FindUserData(accountList, email.value);
     let alertText = '';
-
-    if (userData == undefined){
-        alertText = `O e-mail (${email.value}) não está cadastrado!`
-        ErrorMessage(alertText);
-    }
-
-    else {
+    
+    if (db.isEmailRegistered(email.value)) {
         alertText = `E-mail enviado com sucesso!`
         EmailSent(alertText);
+    } else {
+        alertText = `O e-mail (${email.value}) não está cadastrado!`
+        ErrorMessage(alertText);
     }
 }
 

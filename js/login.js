@@ -1,21 +1,10 @@
-//função para achar conta (pelo email) em lista de contas
-function FindUserData(accountList, email){
-
-    let objFound = accountList.find(obj => obj.email == email);
-
-return objFound;
-}
-
-//verifica login
-function Login(){
-    let accountList = JSON.parse(localStorage.getItem("accounts"));
+//verifica login (modificado para metodo do database.js)
+function Login() {
     let email = document.getElementById("email");
     let password = document.getElementById("password");
-
-    let userData = FindUserData(accountList, email.value);
     let alertText = '';
     
-    switch(true){
+    switch(true) {
         case (email.value == ''):
             alertText = `Preencha o campo do seu E-mail!`;
             ErrorMessage('email', alertText);
@@ -25,20 +14,16 @@ function Login(){
             alertText = `Preencha o campo da sua Senha!`;
             ErrorMessage('password', alertText);
             break;
-    
-        case (userData == undefined):
-            alertText = `O e-mail "${email.value}" não está cadastrado!`;
-            ErrorMessage('email', alertText);
-            break;
-
-        case (password.value != userData.password):
-            alertText = `Senha incorreta!`;
-            ErrorMessage('password', alertText);
-            break;
         
         default:
-            alertText = `Login efetuado com sucesso!`;
-            LoginConfirmed(alertText);
+            let res = db.requestAuthLogin(email.value, password.value);
+            if (res === 'ok') {
+                alertText = `Login efetuado com sucesso!`;
+                LoginConfirmed(alertText);
+            } else {
+                alertText = `Credencial inválida!`;
+                ErrorMessage(res, alertText);
+            }
     }
 }
 
@@ -82,5 +67,5 @@ function LoginConfirmed(alertText) {
         let element = document.getElementById(`alert-message`);
         element.classList.add('hidden'); 
         window.location.href = 'main-page.html'
-        }, 5000);
+        }, 2000);
 };

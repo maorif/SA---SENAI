@@ -1,5 +1,3 @@
-let accountList = [];
-let accountCode;
 let firstname = document.getElementById('firstname');
 let surname = document.getElementById('surname');
 let phone = document.getElementById('phone');
@@ -13,8 +11,8 @@ let registrationError = document.getElementById('alert-message');
 function createNewAccount() {
     let inputError = '';
     let alertText = '';
-    let existingAccountEmail = false;
-    accountList.find(account => account.email == email.value) != null ? existingAccountEmail = true : existingAccountEmail = false;
+    let existingAccountEmail = db.isEmailRegistered(email.value);
+    
     switch (true) {
         case (firstname.value == ''):
             inputError = 'firstname';
@@ -55,73 +53,46 @@ function createNewAccount() {
             passwordValidationErrorOnRegisterAccount();
             break;
         default:
-            returnNewAccountCode();
             let fullname = `${firstname.value} ${surname.value}`;
-            accountList.push({
-                code: accountCode,
-                firstname: firstname.value,
-                surname: surname.value,
-                email: email.value,
-                phone: phone.value,
-                password: password.value,
-            });
+            let inputsArr = [
+                firstname.value,
+                surname.value,
+                email.value,
+                phone.value,
+                password.value
+            ];
+            db.createNewAccount(...inputsArr);
+            addNewAccountOnTable(...inputsArr);
             successfulAccountRegistration(fullname);
-            addNewAccountOnTable({
-                code: accountCode,
-                firstname: firstname.value,
-                surname: surname.value,
-                email: email.value,
-                phone: phone.value,
-                password: password.value,
-            }); 
-            clearInputFieldsOnScreen()
-            localStorage.setItem("accounts", JSON.stringify(accountList));
-            break;
-    };
-};
-
-// Abaixo é a função que compõe a geração e validação de código da Conta.
-
-function returnNewAccountCode() { 
-    let existingAccountCode = false;
-    do {
-        accountCode = Math.floor(Math.random() * 10000);
-        accountList.find(account => account.code == accountCode) != null ? existingAccountCode = true : existingAccountCode = false;
-    } while (existingAccountCode == true || accountCode == 0);  
-    return accountCode;
-};
+            clearInputFieldsOnScreen();
+    }
+}
 
 // Abaixo é a função para limpar os campos de input.
 
 function clearInputFieldsOnScreen() {
-    let firstname = document.getElementById('firstname');
-    let surname = document.getElementById('surname');
-    let phone = document.getElementById('phone');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let confirmPassword = document.getElementById('confirm-password');
     firstname.value = '';
     surname.value = '';
     phone.value = '';
     email.value = '';
     password.value = '';
     confirmPassword.value = '';
-};
+}
 
 // Abaixo é a função para apresentar a Conta cadastrada na tabela da página.
 
-function addNewAccountOnTable(newAcc) {
+function addNewAccountOnTable(firstname, surname, email, phone, password) {
     let accountLine = document.createElement('div');
     let idTd = document.createElement('div');
     let nameTd = document.createElement('div');
     let emailTd = document.createElement('div');
     let phoneTd = document.createElement('div');
     let passwordTd = document.createElement('div');
-    idTd.textContent = newAcc.code;
-    nameTd.textContent = `${newAcc.firstname} ${newAcc.surname}`;
-    emailTd.textContent = newAcc.email;
-    phoneTd.textContent = newAcc.phone;
-    passwordTd.textContent = newAcc.password;
+    idTd.textContent = '';
+    nameTd.textContent = `${firstname} ${surname}`;
+    emailTd.textContent = email;
+    phoneTd.textContent = phone;
+    passwordTd.textContent = password;
     accountLine.appendChild(idTd);
     accountLine.appendChild(nameTd);
     accountLine.appendChild(emailTd);
