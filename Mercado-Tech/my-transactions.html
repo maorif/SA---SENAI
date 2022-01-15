@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/hidden.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar-menu.css">
+    <link rel="stylesheet" type="text/css" href="css/sidebar-shopping.css">
+    <link rel="stylesheet" type="text/css" href="css/alert-message.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/hidden-table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Minhas Transações - Mercado Tech</title>
+</head>
+<body>
+    
+    <header id="hdr">
+    </header>
+
+    <main class="row">
+        
+        <div id="general-menu-bar" class="menu column hidden">
+        </div>
+
+        <div class="column width100 main-content-container">
+
+
+            <div class="alert-container align-center column">
+                <div class="align-center" id="alert-message"></div>
+            </div>
+
+
+            <section id="research-account-section">
+                <div id="my-product-container" class="table-container">
+                    <div>
+                        <h2>minhas vendas <i class="fa fa-forward gold-icon"></i></h2>
+                    </div>
+                    <div id="my-seller-table" class="table hidden">
+                        <div id="registration-line" class="thead tr">
+                            <div class="thead-td thead-td-product-name-description">
+                                nome
+                            </div>
+                            <div class="thead-td thead-td-product-name-description">
+                                descrição
+                            </div>
+                            <div class="thead-td thead-td-product-stock">
+                                quantidade
+                            </div>
+                            <div class="thead-td thead-td-product-value">
+                                valor un.
+                            </div>
+                            <div class="thead-td thead-td-product-value">
+                                valor total
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="all-registered-product-container" class="table-container">
+                    <div>
+                        <h2>minhas compras <i class="fa fa-backward gold-icon"></i></h2>
+                    </div>
+                    <div id="my-buyer-table" class="table hidden">
+                        <div id="registration-line2" class="thead tr">
+                            <div class="thead-td thead-td-product-name-description">
+                                nome
+                            </div>
+                            <div class="thead-td thead-td-product-name-description">
+                                descrição
+                            </div>
+                            <div class="thead-td thead-td-product-stock">
+                                quantidade
+                            </div>
+                            <div class="thead-td thead-td-product-value">
+                                valor un.
+                            </div>
+                            <div class="thead-td thead-td-product-value">
+                                valor total
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+
+        <div id="shopping-cart-bar" class="shopping-cart-bar column hidden">
+        </div>
+
+    </main>
+
+    <footer id="ftr">
+    </footer>
+
+    <!--
+        Scripts comuns de todas as paginas
+    -->
+    <script src="js/database.js"></script>
+    <script src="js/common-content.js"></script>
+    <script src="js/open-page.js"></script>
+    <script src="js/side-shopping-cart.js"></script>
+
+    <!--
+        Scripts específicos da página
+    -->
+    <script src="js/my-transactions.js"></script>
+
+</body>
+</html>
