@@ -1,4 +1,4 @@
-Projeto final (SA) - primeiro semestre - SENAI - 2021-2
+Projeto final (SA) - primeiro semestre - Desenvolvimento de Sistemas - SENAI - 2021-2
 
 Mercado-Tech: Projeto de Marketplace de eletrônicos desenvolvido com JavaScript, HTML e CSS.
 
